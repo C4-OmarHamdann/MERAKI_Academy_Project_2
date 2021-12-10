@@ -6,13 +6,15 @@ body {
 .nav {
   overflow: hidden;
   background-color: #020202;
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav a {
   float: left;
-  display: block;
+
   color: white;
-  text-align: center;
+
   padding: 20px 16px;
   text-decoration: none;
   font-size: 17px;
@@ -62,12 +64,16 @@ body {
 .nav .search button:hover {
   background: #ccc;
 }
+@media only screen and (max-width: 768px) {
+  .nav {
+    display: block;
+  }
 
-@media screen and (max-width: 600px) {
   .nav .search {
     float: none;
   }
   .nav a,
+  .nav .auth,
   .nav input,
   .nav .search button {
     float: none;
