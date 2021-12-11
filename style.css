@@ -85,13 +85,12 @@ body {
 .movie-list-item-img {
   transition: all 1s ease-in-out;
   width: 270px;
-  height: 200px;
+  height: 300px;
   object-fit: cover;
   border-radius: 20px;
 }
 
 .movie-list-item-title {
-  background-color: #333;
   padding: 0 10px;
   font-size: 32px;
   font-weight: bold;
@@ -100,10 +99,13 @@ body {
   left: 50px;
   opacity: 0;
   transition: 1s all ease-in-out;
+  overflow: hidden;
+  width: 250px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 /* ragraph*/
 .movie-list-item-desc {
-  background-color: #333;
   padding: 10px;
   font-size: 14px;
   position: absolute;
@@ -112,6 +114,10 @@ body {
   width: 230px;
   opacity: 0;
   transition: 1s all ease-in-out;
+  overflow-x: hidden;
+  width: 550px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 /* read more button*/
 .movie-list-item-button {
