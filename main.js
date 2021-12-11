@@ -80,7 +80,25 @@ const ball = document.querySelector(".toggle-ball");
 const items = document.querySelectorAll(
   ".more-details-section,.container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
 );
-
+let c = true;
 ball.addEventListener("click", () => {
   ball.classList.toggle("active");
+  if (c) {
+    $(":root").css({
+      "--main-bg-color": "#eee",
+      "--main-txt-color": "#333",
+      "--main-nav-bg-color": "white",
+      "--main-nav-txt-color": "black",
+    });
+    c = false;
+  } else {
+    $(":root").css({
+      "--main-bg-color": "#333",
+      "--main-txt-color": "#eee",
+
+      "--main-nav-bg-color": "black",
+      "--main-nav-txt-color": "white",
+    });
+    c = true;
+  }
 });
