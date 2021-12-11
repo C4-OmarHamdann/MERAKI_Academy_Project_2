@@ -3,6 +3,8 @@
 }
 
 body {
+  background-color: #333;
+  color: #eee;
   font-family: "Roboto", sans-serif;
 }
 
@@ -59,4 +61,80 @@ body {
 .auth-list .logout {
   text-decoration: none;
   color: red;
+}
+
+/* card */
+
+.movie-list-item {
+  margin-right: 30px;
+  position: relative;
+}
+
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.5;
+}
+
+.movie-list-item:hover .movie-list-item-title,
+.movie-list-item:hover .movie-list-item-desc,
+.movie-list-item:hover .movie-list-item-button {
+  opacity: 1;
+}
+
+.movie-list-item-img {
+  transition: all 1s ease-in-out;
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.movie-list-item-title {
+  background-color: #333;
+  padding: 0 10px;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+/* ragraph*/
+.movie-list-item-desc {
+  background-color: #333;
+  padding: 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 30%;
+  left: 50px;
+  width: 230px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+/* read more button*/
+.movie-list-item-button {
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+/* favorite button*/
+.fa.fa-heart {
+  padding: 8px;
+  background-color: tomato;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 8;
 }
