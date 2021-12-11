@@ -170,7 +170,7 @@ body {
 /* detials */
 
 .more-details-section {
-  padding: 50px;
+  padding: 75px;
   display: none;
 }
 
@@ -199,7 +199,7 @@ body {
   display: flex;
 }
 .anime-detials p {
-  padding: 2em;
+  padding: 4em 2em;
   line-height: 1.5;
 }
 .genres li {
@@ -341,4 +341,34 @@ hr {
   content: "";
   clear: both;
   display: table;
+}
+.toggle {
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.toggle-icon {
+  color: goldenrod;
+}
+
+.toggle-ball {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s ease all;
+}
+
+.toggle-ball.active {
+  background-color: white;
+  transform: translateX(-20px);
 }

@@ -74,3 +74,13 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+//TOGGLE DARKMODE
+
+const ball = document.querySelector(".toggle-ball");
+const items = document.querySelectorAll(
+  ".more-details-section,.container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
+);
+
+ball.addEventListener("click", () => {
+  ball.classList.toggle("active");
+});
