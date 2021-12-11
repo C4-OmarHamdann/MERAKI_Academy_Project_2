@@ -17,18 +17,15 @@ $.ajax(settings).done(function (response) {
   const top = response.anime;
   // console.log(response.top[0].title);
   top.forEach((element) => {
+    console.log(element.image_url);
     listCard.append(`<div class="movie-list-item">
       <i class="fa fa-heart"></i>
-      <img class="movie-list-item-img" src="img/1.jpg" alt="" />
-      <span class="movie-list-item-title">Naruto</span>
+      <img class="movie-list-item-img" src="${element.image_url}" alt="" />
+      <span class="movie-list-item-title">${element.title}</span>
       <p class="movie-list-item-desc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At hic
-        fugit similique accusantium.
+      ${element.synopsis}
       </p>
       <button class="movie-list-item-button">Details</button>
     </div>`);
   });
-  $(".movie-list-item-title").text(top[0].title);
-  $(".movie-list-item-desc").text(top[0].synopsis);
-  $(".movie-list-item-img").attr("src", top[0].image_url);
 });
