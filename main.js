@@ -1,3 +1,4 @@
+const listCardWrapper = $(".movie-list-wrapper");
 const listCard = $(".movie-list");
 const detalis = $(".more-details-section");
 
@@ -47,11 +48,15 @@ $.ajax(settings).done(function (response) {
     $(".image").attr("src", data.image_url);
 
     $(".synopsis").text(data.synopsis);
-    listCard.hide();
+    for (let index = 0; index < data.genres.length; index++) {
+      $(".genres ul").append(`<li>${data.genres[index].name}</li>`);
+    }
+    listCardWrapper.hide();
     $(".more-details-section").show();
   });
   $(".exit").click(() => {
-    listCard.show();
+    listCardWrapper.show();
+    $(".genres ul").html("");
     $(".more-details-section").hide();
   });
 });
