@@ -4,27 +4,43 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>ANIME FLEX</title>
   </head>
   <body>
-    <div class="nav">
-      <div calss="auth">
-        <a href="#home">Login</a>
-        <a href="#about">Sign in</a>
-      </div>
-      <div class="main-logo">
-        <h1>ANIME<span>FLIX</span></h1>
-      </div>
-      <div class="search">
-        <form>
-          <input type="text" placeholder="Search.." name="search" />
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
+    <div class="navbar">
+      <div class="navbar-container">
+        <div class="logo-container">
+          <h1 class="logo">ANIME<span style="color: red">FLEX</span></h1>
+        </div>
+
+        <div class="profile-container">
+          <img class="profile-picture" src="image/profile.jpg" alt="" />
+          <div class="profile-text-container">
+            <span class="profile-text">Omar Labib</span>
+          </div>
+          <div class="auth">
+            <ul class="auth-list">
+              <li><a href="#" class="logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
