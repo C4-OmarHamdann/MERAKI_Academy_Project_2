@@ -167,6 +167,7 @@ body {
 
 .more-details-section {
   padding: 50px;
+  display: none;
 }
 
 .flex-container {
