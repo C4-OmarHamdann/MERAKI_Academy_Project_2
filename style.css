@@ -64,6 +64,22 @@ body {
 }
 
 /* card */
+.movie-list-container {
+  padding: 0 20px;
+}
+
+.movie-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-list {
+  display: flex;
+  align-items: center;
+  height: 400px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
 
 .movie-list-item {
   margin-right: 30px;
@@ -72,8 +88,9 @@ body {
 
 .movie-list-item:hover .movie-list-item-img {
   transform: scale(1.2);
+
   margin: 0 30px;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .movie-list-item:hover .movie-list-item-title,
@@ -104,7 +121,7 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-/* ragraph*/
+/* pragraph*/
 .movie-list-item-desc {
   padding: 10px;
   font-size: 14px;
@@ -115,9 +132,9 @@ body {
   opacity: 0;
   transition: 1s all ease-in-out;
   overflow-x: hidden;
-  width: 550px;
-  white-space: nowrap;
+  height: 110px;
   text-overflow: ellipsis;
+  overflow-y: hidden;
 }
 /* read more button*/
 .movie-list-item-button {
@@ -137,6 +154,7 @@ body {
 /* favorite button*/
 .fa.fa-heart {
   padding: 8px;
+  cursor: pointer;
   background-color: tomato;
   border-radius: 50%;
   position: absolute;
