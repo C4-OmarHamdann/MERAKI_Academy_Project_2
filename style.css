@@ -73,7 +73,6 @@ body {
 }
 
 .movie-list {
-  padding: 100px;
   align-items: center;
   height: 400px;
   transform: translateX(0);
@@ -162,4 +161,63 @@ body {
   top: 15px;
   right: 15px;
   z-index: 8;
+}
+
+/* detials */
+
+.more-details-section {
+  padding: 50px;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+.flex-item {
+  padding: 5px;
+  margin: 5px;
+  line-height: 50px;
+  color: #000;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+.categories .fas {
+  margin: 0 8px;
+}
+.fa-star.checked {
+  color: orange;
+}
+.anime-detials {
+  display: flex;
+}
+.anime-detials p {
+  padding: 2em;
+  line-height: 1.5;
+}
+.tags li {
+  display: inline-block;
+  margin: 0 5px 5px 0;
+  padding: 5px 9px;
+  background: rgba(25, 55, 103, 0.08);
+  border-radius: 5px;
+}
+.tags h4 {
+  padding: 10px 2em;
+}
+.tags li a {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+.header i {
+  margin-left: auto;
+  color: red;
+  font-size: 50px;
+  cursor: pointer;
 }

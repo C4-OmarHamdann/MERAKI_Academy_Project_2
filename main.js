@@ -27,7 +27,18 @@ $.ajax(settings).done(function (response) {
       <p class="movie-list-item-desc">
       ${element.synopsis}
       </p>
-      <button class="movie-list-item-button">Details</button>
+      <button class="movie-list-item-button details-btn">Details</button>
     </div>`);
+    //details card
+    $(".more-details-section").hide();
+
+    $(".details-btn").click(function () {
+      listCard.hide();
+      $(".more-details-section").show();
+    });
+    $(".exit").click(function () {
+      listCard.show();
+      $(".more-details-section").hide();
+    });
   });
 });
