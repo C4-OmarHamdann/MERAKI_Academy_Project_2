@@ -16,6 +16,8 @@ $.ajax(settings).done(function (response) {
   console.log(response.anime);
   const top = response.anime;
   // console.log(response.top[0].title);
+
+  //add card
   top.forEach((element) => {
     console.log(element.image_url);
     listCard.append(`<div class="movie-list-item">

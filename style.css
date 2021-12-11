@@ -70,11 +70,10 @@ body {
 
 .movie-list-wrapper {
   position: relative;
-  overflow: hidden;
 }
 
 .movie-list {
-  display: flex;
+  padding: 100px;
   align-items: center;
   height: 400px;
   transform: translateX(0);
@@ -83,6 +82,8 @@ body {
 
 .movie-list-item {
   margin-right: 30px;
+  margin-bottom: 30px;
+  display: inline-block;
   position: relative;
 }
 
