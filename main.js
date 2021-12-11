@@ -60,3 +60,17 @@ $.ajax(settings).done(function (response) {
     $(".more-details-section").hide();
   });
 });
+// Get the popup
+var modal = document.getElementById("id01"); //Signup
+var modal2 = document.getElementById("id02"); //Login
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+window.onclick = function (event) {
+  if (event.target == modal2) {
+    modal.style.display = "none";
+  }
+};
