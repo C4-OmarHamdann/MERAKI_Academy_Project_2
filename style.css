@@ -37,7 +37,7 @@ body {
 }
 
 .logo {
-  font-size: 30px;
+  cursor: pointer;
   color: var(--main-txt-color);
 }
 
@@ -193,7 +193,7 @@ body {
   padding: 5px;
   margin: 5px;
   line-height: 50px;
-  color: var(--main-nav-bg-color);
+  color: var(--main-nav--bg-color);
   font-weight: bold;
   font-size: 1em;
   text-align: center;
