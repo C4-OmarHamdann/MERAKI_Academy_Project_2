@@ -105,19 +105,47 @@ ball.addEventListener("click", () => {
 
 //sign up
 
-const userName = $(".s-username").val();
-const email = $(".s-email").val();
-const pass = $(".s-psw").val();
-const passRepeat = $(".s-psw-r").val();
+const userName = $(` <input
+class="s-username"
+
+type="text"
+placeholder="Enter Username"
+name="uname"
+required
+/>`);
+$(".uname").append(userName);
+const email = $(`<input
+class="s-email"
+type="text"
+placeholder="Enter Email"
+name="email"
+required
+/>`);
+$(".email").append(email);
+const pass = $(`<input
+class="s-psw"
+type="password"
+placeholder="Enter Password"
+name="psw"
+required
+/>`);
+$(".psw").append(pass);
+const passRepeat = $(`<input
+class="s-psw-r"
+type="password"
+placeholder="Repeat Password"
+name="psw-repeat"
+required
+/>`);
+$(".psw-r").append(passRepeat);
 const submit = $(".signupbtn");
 
-submit.on("click", (e) => {
+submit.on("click", () => {
   dataUsers.push({
-    userName: this.userName,
-    email: email,
-    password: pass,
+    userName: userName.val(),
+    email: email.val(),
+    password: pass.val(),
     fav: [],
   });
-  console.log(e.target.userName);
 });
 console.log(dataUsers);
