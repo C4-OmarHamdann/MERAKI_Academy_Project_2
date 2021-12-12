@@ -215,6 +215,7 @@ body {
   list-style: none;
   display: flex;
 }
+/* items */
 .flex-item {
   padding: 5px;
   margin: 5px;
@@ -226,9 +227,6 @@ body {
 }
 .categories .fas {
   margin: 0 8px;
-}
-.fa-star.checked {
-  color: orange;
 }
 .anime-detials {
   display: flex;
@@ -265,6 +263,7 @@ body {
 .image {
   padding-top: 32px;
 }
+/* footer */
 footer {
   text-align: center;
   padding: 10px;
