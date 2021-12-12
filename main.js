@@ -20,7 +20,7 @@ $.ajax(settings).done(function (response) {
   //add card
   top.forEach((element, index) => {
     listCard.append(`<div class="movie-list-item">
-      <i class="fa fa-heart"></i>
+      <i id="${index}" class="fa fa-heart "></i>
       <img class="movie-list-item-img" src="${element.image_url}" alt="" />
       <span class="movie-list-item-title">${element.title}</span>
       <p class="movie-list-item-desc">
@@ -36,7 +36,7 @@ $.ajax(settings).done(function (response) {
   $(".details-btn").click((e) => {
     let index = e.target.id;
     const data = top[e.target.id];
-    console.log(data.title);
+
     $(".header h1").text(data.title);
     $(".eps").text(data.episodes);
     $(".date").text(data.airing_start.substring(0, 10));
@@ -50,12 +50,21 @@ $.ajax(settings).done(function (response) {
     }
     listCardWrapper.hide();
     $(".more-details-section").show();
+
+    //fav list\\
+    $(".heartd").on("click", () => {
+      console.log(top[e.target.id]);
+    });
   });
+
   $(".exit").click(() => {
     listCardWrapper.show();
     $(".genres ul").html("");
     $(".more-details-section").hide();
   });
+});
+$(".heartl").on((e) => {
+  console.log("h");
 });
 
 //TOGGLE DARKMODE
@@ -170,7 +179,7 @@ submit.on("click", () => {
     email.css("background-color", "#F52A12");
   }
 });
-
+//logout button\\
 $(".logout").on("click", () => {
   $(".profile-text-container").css("display", "none").text(userName.val());
   $(".profile-picture").css("display", "none");
@@ -179,5 +188,7 @@ $(".logout").on("click", () => {
   $(".show-login").parent().show();
   $(".show-signup").parent().show();
 });
+
+//login\\
 
 console.log(dataUsers);

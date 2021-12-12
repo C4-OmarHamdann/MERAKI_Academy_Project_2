@@ -171,6 +171,7 @@ body {
   transition: 1s all ease-in-out;
 }
 /* favorite button*/
+
 .fa.fa-heart {
   padding: 8px;
   cursor: pointer;
@@ -180,6 +181,21 @@ body {
   top: 15px;
   right: 15px;
   z-index: 8;
+}
+.fas.fa-heart {
+  padding: 8px;
+  margin: 0;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: tomato;
+  text-align: center;
+  width: 80%;
+}
+.heart-d {
+  font-size: 30px;
+  cursor: pointer;
+  color: tomato;
 }
 
 /* detials */
