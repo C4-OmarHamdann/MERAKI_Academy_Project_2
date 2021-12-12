@@ -143,6 +143,7 @@ submit.on("click", () => {
             email: email.val(),
             password: pass.val(),
             fav: [],
+            usersStatus: false,
           });
           passRepeat.css("background-color", "var(--main-bg-color)");
           pass.css("background-color", "var(--main-bg-color)");
@@ -158,6 +159,7 @@ submit.on("click", () => {
           $(".auth-list a").css("display", "block");
           $(".show-login").parent().hide();
           $(".show-signup").parent().hide();
+          dataUsers.usersStatus = true;
         } else {
           passRepeat.css("background-color", "#F52A12");
           pass.css("background-color", "#F52A12");
@@ -181,6 +183,7 @@ submit.on("click", () => {
 });
 //logout button\\
 $(".logout").on("click", () => {
+  dataUsers.usersStatus = false;
   $(".profile-text-container").css("display", "none").text(userName.val());
   $(".profile-picture").css("display", "none");
   $(".favlist").css("display", "none");
