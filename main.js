@@ -215,7 +215,6 @@ $(".login-psw").append(loginPass);
 const login = $(".loginbtn");
 
 login.on("click", () => {
-  console.log("asd");
   dataUsers.forEach((element) => {
     if (
       loginEmail.val() == element.email &&
@@ -230,7 +229,34 @@ login.on("click", () => {
       $(".auth-list a").css("display", "block");
       $(".show-login").parent().hide();
       $(".show-signup").parent().hide();
-      console.log("qwe");
     }
+  });
+});
+
+//favlist\\
+$(".favlastIteams").hide();
+$(".favlist").on("click", () => {
+  let favArray = [];
+  $(".favlastIteams").show();
+  favArray = dataUsers[1].fav;
+
+  favArray.forEach((element, index) => {
+    $(".favlastIteams").append(`<div class="movie-list-item">
+     
+      <img class="movie-list-item-img" src="${element.image_url}" alt="" />
+      <span class="movie-list-item-title">${element.title}</span>
+      <p class="movie-list-item-desc">
+      ${element.synopsis}
+      </p>
+      
+    </div>`);
+  });
+  listCardWrapper.hide();
+
+  $(".exit").click(() => {
+    listCardWrapper.show();
+
+    $(".favlastIteams").hide();
+    $(".more-details-section").hide();
   });
 });

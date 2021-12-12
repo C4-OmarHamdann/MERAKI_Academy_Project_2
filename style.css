@@ -204,6 +204,10 @@ body {
   padding: 75px;
   display: none;
 }
+.favlast {
+  padding: 75px;
+  display: none;
+}
 
 .flex-container {
   padding: 0;
