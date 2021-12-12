@@ -194,5 +194,43 @@ $(".logout").on("click", () => {
 });
 
 //login\\
+const loginEmail = $(`<input
+class="l-email"
+type="text"
+placeholder="Enter Email"
+name="email"
+required
+/>`);
+$(".login-email").append(loginEmail);
 
-console.log(dataUsers);
+const loginPass = $(`<input
+class="l-psw"
+type="password"
+placeholder="Enter Password"
+name="psw"
+required
+/>`);
+$(".login-psw").append(loginPass);
+
+const login = $(".loginbtn");
+
+login.on("click", () => {
+  console.log("asd");
+  dataUsers.forEach((element) => {
+    if (
+      loginEmail.val() == element.email &&
+      loginPass.val() == element.password
+    ) {
+      $("#id02").css("display", "none");
+      $(".profile-text-container")
+        .css("display", "block")
+        .text(element.userName);
+      $(".profile-picture").css("display", "block");
+      $(".favlist").css("display", "block");
+      $(".auth-list a").css("display", "block");
+      $(".show-login").parent().hide();
+      $(".show-signup").parent().hide();
+      console.log("qwe");
+    }
+  });
+});

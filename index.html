@@ -111,40 +111,26 @@
           title="Close Modal"
           >&times;</span
         >
-        <form class="modal-content">
-          <div class="container">
-            <h1>Login</h1>
-            <hr />
-            <label for="email"><b>Email</b></label>
-            <input
-              class="l-email"
-              type="text"
-              placeholder="Enter Email"
-              name="email"
-              required
-            />
 
-            <label for="psw"><b>Password</b></label>
-            <input
-              class="l-psw"
-              type="password"
-              placeholder="Enter Password"
-              name="psw"
-              required
-            />
+        <div class="container modal-content">
+          <h1>Login</h1>
+          <hr />
+          <label class="login-email" for="email"><b>Email</b></label>
 
-            <div class="clearfix">
-              <button
-                type="button"
-                onclick="document.getElementById('id02').style.display='none'"
-                class="cancelbtn"
-              >
-                Cancel
-              </button>
-              <button type="submit" class="signupbtn">Login</button>
-            </div>
+          <label class="login-psw" for="psw"><b>Password</b></label>
+
+          <div class="clearfix">
+            <button
+              type="button"
+              onclick="document.getElementById('id02').style.display='none'"
+              class="cancelbtn"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="loginbtn">Login</button>
           </div>
-        </form>
+        </div>
+        <
       </div>
     </div>
     <div class="more-details-section">
