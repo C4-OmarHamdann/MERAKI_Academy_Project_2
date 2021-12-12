@@ -271,6 +271,10 @@ footer {
   background-color: tomato;
   color: var(--main-nav-txt-color);
 }
+footer span {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+}
 .auth-list li {
   padding: 0 10px;
 }
