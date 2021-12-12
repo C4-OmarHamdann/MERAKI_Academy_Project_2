@@ -182,7 +182,7 @@ body {
   right: 15px;
   z-index: 8;
 }
-.fas.fa-heart {
+.details-background .fas.fa-heart {
   padding: 8px;
   margin: 0;
   font-size: 20px;

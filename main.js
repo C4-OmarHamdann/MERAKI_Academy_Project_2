@@ -54,6 +54,11 @@ $.ajax(settings).done(function (response) {
     //fav list\\
     $(".heartd").on("click", () => {
       console.log(top[e.target.id]);
+      dataUsers.forEach((element, index) => {
+        if (element.usersStatus) {
+          element.fav.push(top[e.target.id]);
+        }
+      });
     });
   });
 
@@ -62,9 +67,6 @@ $.ajax(settings).done(function (response) {
     $(".genres ul").html("");
     $(".more-details-section").hide();
   });
-});
-$(".heartl").on((e) => {
-  console.log("h");
 });
 
 //TOGGLE DARKMODE
@@ -143,7 +145,7 @@ submit.on("click", () => {
             email: email.val(),
             password: pass.val(),
             fav: [],
-            usersStatus: false,
+            usersStatus: true,
           });
           passRepeat.css("background-color", "var(--main-bg-color)");
           pass.css("background-color", "var(--main-bg-color)");
@@ -159,7 +161,6 @@ submit.on("click", () => {
           $(".auth-list a").css("display", "block");
           $(".show-login").parent().hide();
           $(".show-signup").parent().hide();
-          dataUsers.usersStatus = true;
         } else {
           passRepeat.css("background-color", "#F52A12");
           pass.css("background-color", "#F52A12");
