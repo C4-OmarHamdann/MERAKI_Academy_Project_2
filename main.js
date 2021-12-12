@@ -87,22 +87,6 @@ ball.addEventListener("click", () => {
   }
 });
 
-// // Get the popup
-// const modal = $("id01"); //Signup
-// const modal2 = $("id02"); //Login
-// // When the user clicks anywhere outside of the modal, close it
-// // window.onclick = function (event) {
-// //   if (event.target == modal) {
-// //     modal.style.display = "none";
-// //   }
-// //}
-// ;
-// window.onclick = function (event) {
-//   if (event.target == modal2) {
-//     modal.style.display = "none";
-//   }
-// };
-
 //sign up
 
 const userName = $(` <input
@@ -161,7 +145,7 @@ submit.on("click", () => {
             .css("display", "block")
             .text(userName.val());
           $(".profile-picture").css("display", "block");
-          $(".favlist").show();
+          $(".favlist").css("display", "block");
           $(".auth-list a").css("display", "block");
           $(".show-login").parent().hide();
           $(".show-signup").parent().hide();
@@ -186,4 +170,14 @@ submit.on("click", () => {
     email.css("background-color", "#F52A12");
   }
 });
+
+$(".logout").on("click", () => {
+  $(".profile-text-container").css("display", "none").text(userName.val());
+  $(".profile-picture").css("display", "none");
+  $(".favlist").css("display", "none");
+  $(".logout").hide();
+  $(".show-login").parent().show();
+  $(".show-signup").parent().show();
+});
+
 console.log(dataUsers);
