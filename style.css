@@ -49,7 +49,7 @@ body {
 
 .profile-text-container {
   display: none;
-  margin: 0 13px;
+  margin: 0 13px 0;
 }
 
 .profile-picture {
@@ -69,6 +69,7 @@ body {
 }
 .auth-list .logout {
   display: none;
+  padding-left: 0;
   text-decoration: none;
   color: red;
 }

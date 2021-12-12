@@ -141,11 +141,37 @@ $(".psw-r").append(passRepeat);
 const submit = $(".signupbtn");
 
 submit.on("click", () => {
-  dataUsers.push({
-    userName: userName.val(),
-    email: email.val(),
-    password: pass.val(),
-    fav: [],
-  });
+  if (userName.val() && email.val() && pass.val() && passRepeat.val()) {
+    if (pass.val() === passRepeat.val()) {
+      dataUsers.push({
+        userName: userName.val(),
+        email: email.val(),
+        password: pass.val(),
+        fav: [],
+      });
+      passRepeat.css("background-color", "var(--main-bg-color)");
+      pass.css("background-color", "var(--main-bg-color)");
+      userName.css("background-color", "var(--main-bg-color)");
+      email.css("background-color", "var(--main-bg-color)");
+      $(".woring").remove();
+      $("#id01").css("display", "none");
+      $(".profile-text-container").css("display", "block").text(userName.val());
+      $(".profile-picture").css("display", "block");
+      $(".auth-list a").css("display", "block");
+      $(".show-login").parent().hide();
+      $(".show-signup").parent().hide();
+    } else {
+      passRepeat.css("background-color", "#F52A12");
+      pass.css("background-color", "#F52A12");
+      $(".psw-r").append(
+        `<h3 class="woring" style="color:#F52A12">Password Not Matching</h3>`
+      );
+    }
+  } else {
+    passRepeat.css("background-color", "#F52A12");
+    pass.css("background-color", "#F52A12");
+    userName.css("background-color", "#F52A12");
+    email.css("background-color", "#F52A12");
+  }
 });
 console.log(dataUsers);
