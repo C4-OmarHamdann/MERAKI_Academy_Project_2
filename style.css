@@ -48,10 +48,12 @@ body {
 }
 
 .profile-text-container {
+  display: none;
   margin: 0 13px;
 }
 
 .profile-picture {
+  display: none;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -66,6 +68,7 @@ body {
   color: var(--main-nav-txt-color);
 }
 .auth-list .logout {
+  display: none;
   text-decoration: none;
   color: red;
 }

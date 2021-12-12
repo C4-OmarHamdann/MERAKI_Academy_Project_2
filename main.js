@@ -15,9 +15,7 @@ const settings = {
 };
 
 $.ajax(settings).done(function (response) {
-  console.log(response.anime[1]);
   const top = response.anime;
-  // console.log(response.top[0].title);
 
   //add card
   top.forEach((element, index) => {
@@ -102,3 +100,7 @@ ball.addEventListener("click", () => {
     c = true;
   }
 });
+
+//sign up
+
+console.log(x);
