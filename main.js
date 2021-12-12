@@ -34,7 +34,6 @@ $.ajax(settings).done(function (response) {
   $(".more-details-section").hide();
 
   $(".details-btn").click((e) => {
-    console.log(e.target.id);
     let index = e.target.id;
     const data = top[e.target.id];
     console.log(data.title);
@@ -58,20 +57,7 @@ $.ajax(settings).done(function (response) {
     $(".more-details-section").hide();
   });
 });
-// Get the popup
-var modal = document.getElementById("id01"); //Signup
-var modal2 = document.getElementById("id02"); //Login
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-window.onclick = function (event) {
-  if (event.target == modal2) {
-    modal.style.display = "none";
-  }
-};
+
 //TOGGLE DARKMODE
 
 const ball = document.querySelector(".toggle-ball");
@@ -101,6 +87,37 @@ ball.addEventListener("click", () => {
   }
 });
 
+// // Get the popup
+// const modal = $("id01"); //Signup
+// const modal2 = $("id02"); //Login
+// // When the user clicks anywhere outside of the modal, close it
+// // window.onclick = function (event) {
+// //   if (event.target == modal) {
+// //     modal.style.display = "none";
+// //   }
+// //}
+// ;
+// window.onclick = function (event) {
+//   if (event.target == modal2) {
+//     modal.style.display = "none";
+//   }
+// };
+
 //sign up
 
-console.log(x);
+const userName = $(".s-username").val();
+const email = $(".s-email").val();
+const pass = $(".s-psw").val();
+const passRepeat = $(".s-psw-r").val();
+const submit = $(".signupbtn");
+
+submit.on("click", (e) => {
+  dataUsers.push({
+    userName: this.userName,
+    email: email,
+    password: pass,
+    fav: [],
+  });
+  console.log(e.target.userName);
+});
+console.log(dataUsers);
