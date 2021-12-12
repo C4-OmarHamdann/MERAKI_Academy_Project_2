@@ -252,7 +252,7 @@ $(".favlist").on("click", () => {
     </div>`);
   });
   listCardWrapper.hide();
-
+  //exit button\\
   $(".exit").click(() => {
     listCardWrapper.show();
 
