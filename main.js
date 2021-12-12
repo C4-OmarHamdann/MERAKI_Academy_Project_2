@@ -252,11 +252,11 @@ $(".favlist").on("click", () => {
     </div>`);
   });
   listCardWrapper.hide();
+  $(".more-details-section").hide();
   //exit button\\
   $(".exit").click(() => {
     listCardWrapper.show();
 
     $(".favlastIteams").hide();
-    $(".more-details-section").hide();
   });
 });
