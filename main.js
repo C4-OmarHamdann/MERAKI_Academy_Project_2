@@ -142,31 +142,43 @@ const submit = $(".signupbtn");
 
 submit.on("click", () => {
   if (userName.val() && email.val() && pass.val() && passRepeat.val()) {
-    if (pass.val() === passRepeat.val()) {
-      dataUsers.push({
-        userName: userName.val(),
-        email: email.val(),
-        password: pass.val(),
-        fav: [],
-      });
-      passRepeat.css("background-color", "var(--main-bg-color)");
-      pass.css("background-color", "var(--main-bg-color)");
-      userName.css("background-color", "var(--main-bg-color)");
-      email.css("background-color", "var(--main-bg-color)");
-      $(".woring").remove();
-      $("#id01").css("display", "none");
-      $(".profile-text-container").css("display", "block").text(userName.val());
-      $(".profile-picture").css("display", "block");
-      $(".auth-list a").css("display", "block");
-      $(".show-login").parent().hide();
-      $(".show-signup").parent().hide();
-    } else {
-      passRepeat.css("background-color", "#F52A12");
-      pass.css("background-color", "#F52A12");
-      $(".psw-r").append(
-        `<h3 class="woring" style="color:#F52A12">Password Not Matching</h3>`
-      );
-    }
+    dataUsers.forEach((element) => {
+      if (email.val() != element.email) {
+        if (pass.val() === passRepeat.val()) {
+          dataUsers.push({
+            userName: userName.val(),
+            email: email.val(),
+            password: pass.val(),
+            fav: [],
+          });
+          passRepeat.css("background-color", "var(--main-bg-color)");
+          pass.css("background-color", "var(--main-bg-color)");
+          userName.css("background-color", "var(--main-bg-color)");
+          email.css("background-color", "var(--main-bg-color)");
+          $(".woring").remove();
+          $("#id01").css("display", "none");
+          $(".profile-text-container")
+            .css("display", "block")
+            .text(userName.val());
+          $(".profile-picture").css("display", "block");
+          $(".favlist").show();
+          $(".auth-list a").css("display", "block");
+          $(".show-login").parent().hide();
+          $(".show-signup").parent().hide();
+        } else {
+          passRepeat.css("background-color", "#F52A12");
+          pass.css("background-color", "#F52A12");
+          $(".psw-r").prepend(
+            `<h3 class="woring" style="color:#F52A12">Password Not Matching</h3>`
+          );
+        }
+      } else {
+        email.css("background-color", "#F52A12");
+        $(".email").prepend(
+          `<h3 class="woring" style="color:#F52A12">Existing E-mail</h3>`
+        );
+      }
+    });
   } else {
     passRepeat.css("background-color", "#F52A12");
     pass.css("background-color", "#F52A12");

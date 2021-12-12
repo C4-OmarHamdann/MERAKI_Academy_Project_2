@@ -51,6 +51,11 @@ body {
   display: none;
   margin: 0 13px 0;
 }
+.favlist {
+  display: none;
+  color: tomato;
+  cursor: pointer;
+}
 
 .profile-picture {
   display: none;
