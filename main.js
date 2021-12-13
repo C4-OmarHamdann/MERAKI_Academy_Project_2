@@ -1,5 +1,6 @@
 const listCardWrapper = $(".movie-list-wrapper");
 const listCard = $(".movie-list");
+const listCardTop = $(".movie-list-top");
 const detalis = $(".more-details-section");
 
 //API \\
@@ -267,5 +268,34 @@ $(".favlist").on("click", () => {
     listCardWrapper.show();
 
     $(".favlastIteams").hide();
+  });
+});
+
+//top
+const settingstop = {
+  async: true,
+  crossDomain: true,
+  url: "https://jikan1.p.rapidapi.com/top/anime/1/upcoming",
+  method: "GET",
+  headers: {
+    "x-rapidapi-host": "jikan1.p.rapidapi.com",
+    "x-rapidapi-key": "d6c22af919mshbe0c64cbda6df24p1b18a0jsn4c1b30eb7e33",
+  },
+};
+
+$.ajax(settingstop).done(function (response) {
+  const top = response.top;
+  console.log(top);
+  //add card
+  top.forEach((element, index) => {
+    listCardTop.append(`<div class="movie-list-item">
+    <i id="${index}" class="fa fa-heart "></i>
+      <img class="movie-list-item-img" src="${element.image_url}" alt="" />
+      <span class="movie-list-item-title">${element.title}</span>
+      <p class="movie-list-item-desc">
+      ${element.start_date == "null" ? "coming soon" : element.start_date}
+      </p>
+      <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+    </div>`);
   });
 });
