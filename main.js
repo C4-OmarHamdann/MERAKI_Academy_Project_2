@@ -19,18 +19,31 @@ $.ajax(settings).done(function (response) {
   const top = response.anime;
 
   //add card
-  top.forEach((element, index) => {
-    listCard.append(`<div class="movie-list-item">
-      <i id="${index}" class="fa fa-heart "></i>
-      <img class="movie-list-item-img" src="${element.image_url}" alt="" />
-      <span class="movie-list-item-title">${element.title}</span>
-      <p class="movie-list-item-desc">
-      ${element.synopsis}
-      </p>
-      <button id="${index}" class="movie-list-item-button details-btn">Details</button>
-    </div>`);
-  });
+  let cards_length = $(".movie-list-item").length;
+  // top.forEach((element, index) => {
 
+  //   listCard.append(`<div class="movie-list-item">
+  //     <i id="${index}" class="fa fa-heart "></i>
+  //     <img class="movie-list-item-img" src="${element.image_url}" alt="" />
+  //     <span class="movie-list-item-title">${element.title}</span>
+  //     <p class="movie-list-item-desc">
+  //     ${element.synopsis}
+  //     </p>
+  //     <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+  //   </div>`);
+  // });
+
+  for (let index = 0; index < 16; index++) {
+    listCard.append(`<div class="movie-list-item">
+     <i id="${index}" class="fa fa-heart "></i>
+     <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
+       <span class="movie-list-item-title">${top[index].title}</span>
+       <p class="movie-list-item-desc">
+       ${top[index].synopsis}
+       </p>
+       <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+     </div>`);
+  }
   //details card
   $(".more-details-section").hide();
 
@@ -271,7 +284,7 @@ $(".favlist").on("click", () => {
   });
 });
 
-//top
+//Upcomming
 const settingstop = {
   async: true,
   crossDomain: true,
@@ -288,14 +301,40 @@ $.ajax(settingstop).done(function (response) {
   console.log(top);
   //add card
   top.forEach((element, index) => {
-    listCardTop.append(`<div class="movie-list-item">
+    $(".upcomming-movie-list").append(`<div class="movie-list-item">
     <i id="${index}" class="fa fa-heart "></i>
       <img class="movie-list-item-img" src="${element.image_url}" alt="" />
       <span class="movie-list-item-title">${element.title}</span>
       <p class="movie-list-item-desc">
-      ${element.start_date == "null" ? "coming soon" : element.start_date}
+      ${element.start_date == null ? "coming soon" : element.start_date}
       </p>
       <button id="${index}" class="movie-list-item-button details-btn">Details</button>
     </div>`);
   });
+});
+
+const request = new XMLHttpRequest();
+
+request.open(
+  "GET",
+  `https://api.jikan.moe/v3/search/anime?q=${"Dr. Stone"}&page=1`
+);
+
+request.onreadystatechange = function () {
+  if (this.readyState === 4) {
+    // console.log("Status:", this.status);
+    // console.log("Headers:", this.getAllResponseHeaders());
+    console.log("Body:", JSON.parse(this.responseText).results[0].image_url);
+  }
+  console.log("Body:", JSON.parse(this.responseText).results[9].image_url);
+};
+
+request.send();
+//Enter click
+
+$("#search").bind("keypress", (e) => {
+  let enter_button = e.keyCode;
+  if (enter_button == 13) {
+    $(".movie-list-container").hide();
+  }
 });
