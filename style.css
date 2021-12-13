@@ -208,6 +208,9 @@ body {
   padding: 75px;
   display: none;
 }
+.fa-star {
+  color: gold;
+}
 
 .flex-container {
   padding: 0;

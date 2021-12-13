@@ -1,5 +1,7 @@
 //database\\
-const dataUsers = [
+const dataStorage = window.localStorage;
+dataStorage.setItem;
+let arrayData = [
   {
     userName: "A16_Omar",
     email: "asd@qwe.com",
@@ -8,3 +10,5 @@ const dataUsers = [
     usersStatus: false,
   },
 ];
+
+let dataUsers = JSON.parse(localStorage.getItem("dataArray"));

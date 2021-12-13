@@ -56,7 +56,15 @@ $.ajax(settings).done(function (response) {
       console.log(top[e.target.id]);
       dataUsers.forEach((element, index) => {
         if (element.usersStatus) {
-          element.fav.push(top[e.target.id]);
+          dataUsers[0].fav.forEach((element) => {
+            if (element.mal_id != top[e.target.id].mal_id) {
+              element.fav.push(top[e.target.id]);
+            } else {
+              console.log(element.mal_id + " /n " + top[e.target.id].mal_id);
+            }
+          });
+        } else {
+          console.log(dataUsers.usersStatus);
         }
       });
     });
@@ -140,13 +148,14 @@ submit.on("click", () => {
     dataUsers.forEach((element) => {
       if (email.val() != element.email) {
         if (pass.val() === passRepeat.val()) {
-          dataUsers.push({
+          arrayData.push({
             userName: userName.val(),
             email: email.val(),
             password: pass.val(),
             fav: [],
             usersStatus: true,
           });
+          dataStorage.setItem("dataArray", JSON.stringify(arrayData));
           passRepeat.css("background-color", "var(--main-bg-color)");
           pass.css("background-color", "var(--main-bg-color)");
           userName.css("background-color", "var(--main-bg-color)");
@@ -235,10 +244,10 @@ login.on("click", () => {
 
 //favlist\\
 $(".favlastIteams").hide();
+let favArray = [];
+favArray = dataUsers[0].fav;
 $(".favlist").on("click", () => {
-  let favArray = [];
   $(".favlastIteams").show();
-  favArray = dataUsers[1].fav;
 
   favArray.forEach((element, index) => {
     $(".favlastIteams").append(`<div class="movie-list-item">
