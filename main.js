@@ -44,6 +44,24 @@ $.ajax(settings).done(function (response) {
        <button id="${index}" class="movie-list-item-button details-btn">Details</button>
      </div>`);
   }
+
+  //show-more\\
+  const showMore = $("#show-more-top");
+  showMore.on("click", () => {
+    for (let index = 16; index < top.length; index++) {
+      listCard.append(`<div class="movie-list-item">
+     <i id="${index}" class="fa fa-heart "></i>
+     <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
+       <span class="movie-list-item-title">${top[index].title}</span>
+       <p class="movie-list-item-desc">
+       ${top[index].synopsis}
+       </p>
+       <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+     </div>`);
+    }
+    showMore.remove();
+  });
+
   //details card
   $(".more-details-section").hide();
 
@@ -298,21 +316,39 @@ const settingstop = {
 
 $.ajax(settingstop).done(function (response) {
   const top = response.top;
-  console.log(top);
+
   //add card
-  top.forEach((element, index) => {
+
+  for (let index = 0; index < 8; index++) {
     $(".upcomming-movie-list").append(`<div class="movie-list-item">
     <i id="${index}" class="fa fa-heart "></i>
-      <img class="movie-list-item-img" src="${element.image_url}" alt="" />
-      <span class="movie-list-item-title">${element.title}</span>
+      <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
+      <span class="movie-list-item-title">${top[index].title}</span>
       <p class="movie-list-item-desc">
-      ${element.start_date == null ? "coming soon" : element.start_date}
+      ${top[index].start_date == null ? "coming soon" : top[index].start_date}
       </p>
       <button id="${index}" class="movie-list-item-button details-btn">Details</button>
     </div>`);
+  }
+  //show-more\\
+  const showMore = $("#show-more-upcomming");
+  showMore.on("click", () => {
+    for (let index = 8; index < top.length; index++) {
+      $(".upcomming-movie-list").append(`<div class="movie-list-item">
+      <i id="${index}" class="fa fa-heart "></i>
+      <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
+        <span class="movie-list-item-title">${top[index].title}</span>
+        <p class="movie-list-item-desc">
+        ${top[index].synopsis}
+        </p>
+        <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+      </div>`);
+    }
+    showMore.remove();
   });
 });
 
+// search\\
 const request = new XMLHttpRequest();
 
 request.open(
