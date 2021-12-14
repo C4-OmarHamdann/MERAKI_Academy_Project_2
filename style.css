@@ -13,7 +13,9 @@ body {
   color: var(--main-txt-color);
   font-family: "Roboto", sans-serif;
 }
-
+hr {
+  border: 1px solid var(--main-txt-color) !important;
+}
 .navbar {
   width: 100%;
   height: 50px;
@@ -278,14 +280,21 @@ body {
 .image {
   padding-top: 32px;
 }
+
+.no-iteam {
+  color: red;
+  text-align: center;
+}
+
 /* footer */
-footer {
+.footer {
   text-align: center;
   padding: 10px;
+
   background-color: tomato;
   color: var(--main-nav-txt-color);
 }
-footer span {
+.footer span {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: italic;
 }

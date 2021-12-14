@@ -60,10 +60,48 @@ $.ajax(settings).done(function (response) {
      </div>`);
     }
     showMore.remove();
+
+    //details card
+
+    $(".details-btn").click((e) => {
+      let index = e.target.id;
+      const data = top[e.target.id];
+
+      $(".header h1").text(data.title);
+      $(".eps").text(data.episodes);
+      $(".date").text(data.airing_start.substring(0, 10));
+      $(".score").text(data.score);
+      $(".rank").text(++index);
+      $(".image").attr("src", data.image_url);
+
+      $(".synopsis").text(data.synopsis);
+      for (let index = 0; index < data.genres.length; index++) {
+        $(".genres ul").append(`<li>${data.genres[index].name}</li>`);
+      }
+      listCardWrapper.hide();
+      $(".more-details-section").show();
+
+      //fav list\\
+      $(".heartd").on("click", () => {
+        console.log(top[e.target.id]);
+        dataUsers.forEach((element, index) => {
+          if (element.usersStatus) {
+            dataUsers[0].fav.forEach((element) => {
+              if (element.mal_id != top[e.target.id].mal_id) {
+                element.fav.push(top[e.target.id]);
+              } else {
+                console.log(element.mal_id + " /n " + top[e.target.id].mal_id);
+              }
+            });
+          } else {
+            console.log(dataUsers.usersStatus);
+          }
+        });
+      });
+    });
   });
 
   //details card
-  $(".more-details-section").hide();
 
   $(".details-btn").click((e) => {
     let index = e.target.id;
@@ -355,21 +393,16 @@ $.ajax(settingstop).done(function (response) {
 const search = $(".search-all").append(
   ` <input type="search" id="search" placeholder="Search..." />`
 );
-// let searchVal = search.val();
-// const stringArray = [];
-// search.keyup((e) => {
-//   stringArray.push(e.key);
-//   let text = $(this).val();
-//   console.log(text);
-// });
+
 $("#search").keyup(function (e) {
   // Search text
+
   let enter_button = e.keyCode;
   if (enter_button == 13) {
     var text = $(this).val();
-    console.log(text);
-    const request = new XMLHttpRequest();
 
+    const request = new XMLHttpRequest();
+    $(".search-list-items").remove();
     request.open(
       "GET",
       `https://api.jikan.moe/v3/search/anime?q=${text}&page=1`
@@ -377,28 +410,46 @@ $("#search").keyup(function (e) {
 
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
-        // console.log("Status:", this.status);
-        // console.log("Headers:", this.getAllResponseHeaders());
-        console.log("Body:", JSON.parse(this.responseText).results[0]);
+        let serchValue = JSON.parse(this.responseText).results;
+        console.log(serchValue);
+        $(".search-list").show();
+        //search card\\
+        for (let index = 0; index < 4; index++) {
+          $(".search-list")
+            .append(`<div class="movie-list-item search-list-items">
+  <i id="${index}" class="fa fa-heart "></i>
+    <img class="movie-list-item-img" src="${
+      serchValue[index].image_url
+    }" alt="" />
+    <span class="movie-list-item-title">${serchValue[index].title}</span>
+    <p class="movie-list-item-desc">
+    ${
+      serchValue[index].start_date == null
+        ? "coming soon"
+        : serchValue[index].start_date
+    }
+    </p>
+    <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+  </div>`);
+        }
+
+        $(".search-list").append();
+        listCardWrapper.hide();
+        $(".more-details-section").hide();
+
+        //exit button\\
+        $(".exit").click(() => {
+          listCardWrapper.show();
+
+          $(".search-list").hide();
+        });
       }
     };
     request.send();
   }
 });
-// search.bind("keypress", (e) => {
-//   let enter_button = e.keyCode;
-//   console.log(e);
-//   if (enter_button == 13) {
-//     console.log(searchVal);
-//     $(".search-list").show();
-//     listCardWrapper.hide();
-//     $(".more-details-section").hide();
 
-//     //exit button\\
-//     $(".exit").click(() => {
-//       listCardWrapper.show();
-
-//       $(".search-list").hide();
-//     });
-//   }
-// });
+//footer\\
+$("body").append(` <div class="footer">
+<p>All rights reserve &copy; <span>Omar Labib Hamdan</span> <br /></p>
+</div>`);
