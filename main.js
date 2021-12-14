@@ -349,42 +349,56 @@ $.ajax(settingstop).done(function (response) {
 });
 
 // search\\
-const request = new XMLHttpRequest();
 
-request.open(
-  "GET",
-  `https://api.jikan.moe/v3/search/anime?q=${"Dr. Stone"}&page=1`
-);
-
-request.onreadystatechange = function () {
-  if (this.readyState === 4) {
-    // console.log("Status:", this.status);
-    // console.log("Headers:", this.getAllResponseHeaders());
-    console.log("Body:", JSON.parse(this.responseText).results[0].image_url);
-  }
-  console.log("Body:", JSON.parse(this.responseText).results[9].image_url);
-};
-
-request.send();
 //Enter click
 
 const search = $(".search-all").append(
   ` <input type="search" id="search" placeholder="Search..." />`
 );
-let searchVal = search.val();
-search.bind("keypress", (e) => {
+// let searchVal = search.val();
+// const stringArray = [];
+// search.keyup((e) => {
+//   stringArray.push(e.key);
+//   let text = $(this).val();
+//   console.log(text);
+// });
+$("#search").keyup(function (e) {
+  // Search text
   let enter_button = e.keyCode;
   if (enter_button == 13) {
-    console.log(searchVal);
-    $(".search-list").show();
-    listCardWrapper.hide();
-    $(".more-details-section").hide();
-    $("hr").hide();
-    //exit button\\
-    $(".exit").click(() => {
-      listCardWrapper.show();
+    var text = $(this).val();
+    console.log(text);
+    const request = new XMLHttpRequest();
 
-      $(".search-list").hide();
-    });
+    request.open(
+      "GET",
+      `https://api.jikan.moe/v3/search/anime?q=${text}&page=1`
+    );
+
+    request.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        // console.log("Status:", this.status);
+        // console.log("Headers:", this.getAllResponseHeaders());
+        console.log("Body:", JSON.parse(this.responseText).results[0]);
+      }
+    };
+    request.send();
   }
 });
+// search.bind("keypress", (e) => {
+//   let enter_button = e.keyCode;
+//   console.log(e);
+//   if (enter_button == 13) {
+//     console.log(searchVal);
+//     $(".search-list").show();
+//     listCardWrapper.hide();
+//     $(".more-details-section").hide();
+
+//     //exit button\\
+//     $(".exit").click(() => {
+//       listCardWrapper.show();
+
+//       $(".search-list").hide();
+//     });
+//   }
+// });

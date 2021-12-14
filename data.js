@@ -12,3 +12,8 @@ let arrayData = [
 ];
 
 let dataUsers = JSON.parse(localStorage.getItem("dataArray"));
+
+//footer\\
+$("body").append(` <footer>
+<p>All rights reserve &copy; <span>Omar Labib Hamdan</span> <br /></p>
+</footer>`);
