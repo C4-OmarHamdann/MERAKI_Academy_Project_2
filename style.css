@@ -52,6 +52,16 @@ body {
   display: none;
   margin: 0 13px 0;
 }
+
+/* favlist and search list */
+.search-list,
+.favlastIteams {
+  display: none;
+}
+.exit {
+  margin: 20px;
+}
+
 .favlist {
   display: none;
   color: tomato;

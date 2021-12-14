@@ -275,7 +275,7 @@ login.on("click", () => {
 });
 
 //favlist\\
-$(".favlastIteams").hide();
+
 let favArray = [];
 favArray = dataUsers[0].fav;
 $(".favlist").on("click", () => {
@@ -368,9 +368,23 @@ request.onreadystatechange = function () {
 request.send();
 //Enter click
 
-$("#search").bind("keypress", (e) => {
+const search = $(".search-all").append(
+  ` <input type="search" id="search" placeholder="Search..." />`
+);
+let searchVal = search.val();
+search.bind("keypress", (e) => {
   let enter_button = e.keyCode;
   if (enter_button == 13) {
-    $(".movie-list-container").hide();
+    console.log(searchVal);
+    $(".search-list").show();
+    listCardWrapper.hide();
+    $(".more-details-section").hide();
+    $("hr").hide();
+    //exit button\\
+    $(".exit").click(() => {
+      listCardWrapper.show();
+
+      $(".search-list").hide();
+    });
   }
 });
