@@ -26,216 +26,228 @@
     <title>ANIME FLEX</title>
   </head>
   <body>
-    <div class="navbar">
-      <div class="navbar-container">
-        <div class="logo-container">
-          <h1 class="logo" onClick="window.location.reload(true)">
-            ANIME<span style="color: rgb(194, 6, 6)">FLIX</span>
-          </h1>
-        </div>
-
-        <div class="search-all"></div>
-        <div class="profile-container">
-          <img class="profile-picture" src="./image/profile.jpg" alt="" />
-          <div class="profile-text-container">
-            <span class="profile-text">Omar Labib</span>
-          </div>
-          <div class="favlist"><i class="fas fa-heart"></i></div>
-          <div class="auth">
-            <ul class="auth-list">
-              <li>
-                <a
-                  href="#"
-                  class="show-login"
-                  onclick="document.getElementById('id02').style.display='block'"
-                  >Login</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="show-signup"
-                  onclick="document.getElementById('id01').style.display='block'"
-                  >Sign Up</a
-                >
-              </li>
-              <li><a href="#" class="logout">Logout</a></li>
-            </ul>
-          </div>
-          <div class="toggle">
-            <i class="fas fa-moon toggle-icon"></i>
-            <i class="fas fa-sun toggle-icon"></i>
-            <div class="toggle-ball"></div>
-          </div>
-        </div>
-      </div>
+    <div class="ring">
+      Loding
+      <span></span>
     </div>
-    <div class="sign-up">
-      <div id="id01" class="modal">
-        <span
-          onclick="document.getElementById('id01').style.display='none'"
-          class="close"
-          title="Close Modal"
-          >&times;</span
-        >
-
-        <div class="container modal-content">
-          <h1>Sign Up</h1>
-          <p>Please fill in this form to create an account.</p>
-          <hr />
-          <label class="uname" for="uname"><b>Username</b></label>
-
-          <label class="email" for="email"><b>Email</b></label>
-
-          <label class="psw" for="psw"><b>Password</b></label>
-
-          <label class="psw-r" for="psw-repeat"><b>Repeat Password</b></label>
-
-          <div class="clearfix">
-            <button
-              type="button"
-              onclick="document.getElementById('id01').style.display='none'"
-              class="cancelbtn"
-            >
-              Cancel
-            </button>
-            <button class="signupbtn">Sign Up</button>
+    <div class="all-content">
+      <div class="navbar">
+        <div class="navbar-container">
+          <div class="logo-container">
+            <h1 class="logo" onClick="window.location.reload(true)">
+              ANIME<span style="color: rgb(194, 6, 6)">FLIX</span>
+            </h1>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="sign-up">
-      <div id="id02" class="modal">
-        <span class="close" title="Close Modal">&times;</span>
 
-        <div class="container modal-content">
-          <h1>Login</h1>
-          <hr />
-          <label class="login-email" for="email-l"><b>Email</b></label>
-
-          <label class="login-psw" for="psw-l"><b>Password</b></label>
-
-          <div class="clearfix">
-            <button
-              type="button"
-              onclick="document.getElementById('id02').style.display='none'"
-              class="cancelbtn"
-            >
-              Cancel
-            </button>
-            <button type="submit" class="loginbtn">Login</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="favlastIteams">
-      <div class="categories">
-        <div class="header">
-          <i class="far fa-times-circle exit"></i>
-        </div>
-        <div class="sub-cat"></div>
-      </div>
-    </div>
-
-    <div class="search-list">
-      <div class="categories">
-        <div class="header">
-          <i class="far fa-times-circle exit"></i>
-        </div>
-        <div class="sub-cat-search"></div>
-      </div>
-    </div>
-    <!-- more details top  -->
-    <div class="more-details-section" id="main-details">
-      <div class="categories">
-        <div class="header">
-          <h1></h1>
-          <i class="far fa-times-circle exit"></i>
-        </div>
-
-        <ul class="flex-container space-between">
-          <li class="flex-item">
-            <i class="fas fa-tv"></i>TV (<span class="eps"></span> eps)
-          </li>
-          <li class="flex-item">
-            <i class="fas fa-calendar"></i><span class="date"></span>
-          </li>
-          <li class="flex-item">
-            <span class="score"></span>
-            <i class="fa fa-star checked"></i>
-          </li>
-          <li class="flex-item">Rank #<span class="rank"></span></li>
-        </ul>
-        <hr />
-        <div class="anime-detials">
-          <div class="details-background">
-            <img class="image" src="" />
-          </div>
-          <div class="details-description">
-            <p class="synopsis"></p>
-            <div class="genres">
-              <h4>genres</h4>
-              <ul></ul>
+          <div class="search-all"></div>
+          <div class="profile-container">
+            <img class="profile-picture" src="./image/profile.jpg" alt="" />
+            <div class="profile-text-container">
+              <span class="profile-text">Omar Labib</span>
+            </div>
+            <div class="favlist"><i class="fas fa-heart"></i></div>
+            <div class="auth">
+              <ul class="auth-list">
+                <li>
+                  <a
+                    href="#"
+                    class="show-login"
+                    onclick="document.getElementById('id02').style.display='block'"
+                    >Login</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="show-signup"
+                    onclick="document.getElementById('id01').style.display='block'"
+                    >Sign Up</a
+                  >
+                </li>
+                <li><a href="#" class="logout">Logout</a></li>
+              </ul>
+            </div>
+            <div class="toggle">
+              <i class="fas fa-moon toggle-icon"></i>
+              <i class="fas fa-sun toggle-icon"></i>
+              <div class="toggle-ball"></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- end -->
-    <div class="more-details-section" id="search-details">
-      <div class="categories">
-        <div class="header">
-          <h1></h1>
-          <i class="far fa-times-circle exit"></i>
-        </div>
+      <a href="#" class="to-top">
+        <i class="fas fa-chevron-up"></i>
+      </a>
+      <div class="sign-up">
+        <div id="id01" class="modal">
+          <span
+            onclick="document.getElementById('id01').style.display='none'"
+            class="close"
+            title="Close Modal"
+            >&times;</span
+          >
 
-        <ul class="flex-container space-between">
-          <li class="flex-item">
-            <i class="fas fa-tv"></i>TV (<span class="eps"></span> eps)
-          </li>
-          <li class="flex-item">
-            <i class="fas fa-calendar"></i><span class="date"></span>
-          </li>
-          <li class="flex-item">
-            <span class="score"></span>
-            <i class="fa fa-star checked"></i>
-          </li>
-        </ul>
+          <div class="container modal-content">
+            <h1>Sign Up</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr />
+            <label class="uname" for="uname"><b>Username</b></label>
+
+            <label class="email" for="email"><b>Email</b></label>
+
+            <label class="psw" for="psw"><b>Password</b></label>
+
+            <label class="psw-r" for="psw-repeat"><b>Repeat Password</b></label>
+
+            <div class="clearfix">
+              <button
+                type="button"
+                onclick="document.getElementById('id01').style.display='none'"
+                class="cancelbtn"
+              >
+                Cancel
+              </button>
+              <button class="signupbtn">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sign-up">
+        <div id="id02" class="modal">
+          <span class="close" title="Close Modal">&times;</span>
+
+          <div class="container modal-content">
+            <h1>Login</h1>
+            <hr />
+            <label class="login-email" for="email-l"><b>Email</b></label>
+
+            <label class="login-psw" for="psw-l"><b>Password</b></label>
+
+            <div class="clearfix">
+              <button
+                type="button"
+                onclick="document.getElementById('id02').style.display='none'"
+                class="cancelbtn"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="loginbtn">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="favlastIteams">
+        <div class="categories">
+          <div class="header">
+            <i class="far fa-times-circle exit"></i>
+          </div>
+          <div class="sub-cat"></div>
+        </div>
+      </div>
+
+      <div class="search-list">
+        <div class="categories">
+          <div class="header">
+            <i class="far fa-times-circle exit"></i>
+          </div>
+          <div class="sub-cat-search"></div>
+        </div>
+      </div>
+      <!-- more details top  -->
+      <div class="more-details-section" id="main-details">
+        <div class="categories">
+          <div class="header">
+            <h1></h1>
+            <i class="far fa-times-circle exit"></i>
+          </div>
+
+          <ul class="flex-container space-between">
+            <li class="flex-item">
+              <i class="fas fa-tv"></i>TV (<span class="eps"></span> eps)
+            </li>
+            <li class="flex-item">
+              <i class="fas fa-calendar"></i><span class="date"></span>
+            </li>
+            <li class="flex-item">
+              <span class="score"></span>
+              <i class="fa fa-star checked"></i>
+            </li>
+            <li class="flex-item">Rank #<span class="rank"></span></li>
+          </ul>
+          <hr />
+          <div class="anime-detials">
+            <div class="details-background">
+              <img class="image" src="" />
+            </div>
+            <div class="details-description">
+              <p class="synopsis"></p>
+              <div class="genres">
+                <h4>genres</h4>
+                <ul></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end -->
+      <div class="more-details-section" id="search-details">
+        <div class="categories">
+          <div class="header">
+            <h1></h1>
+            <i class="far fa-times-circle exit"></i>
+          </div>
+
+          <ul class="flex-container space-between">
+            <li class="flex-item">
+              <i class="fas fa-tv"></i>TV (<span class="eps"></span> eps)
+            </li>
+            <li class="flex-item">
+              <i class="fas fa-calendar"></i><span class="date"></span>
+            </li>
+            <li class="flex-item">
+              <span class="score"></span>
+              <i class="fa fa-star checked"></i>
+            </li>
+          </ul>
+          <hr />
+          <div class="anime-detials">
+            <div class="details-background">
+              <img class="image" src="" />
+            </div>
+            <div class="details-description">
+              <p class="synopsis"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="movie-list-container">
+        <div class="movie-list-wrapper">
+          <h2 class="top-animes">Upcomming Animes</h2>
+          <div class="upcomming-movie-list"></div>
+          <div class="show-button">
+            <button id="show-more-upcomming">
+              Show More <i class="fa fa-arrow-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="movie-list-container">
         <hr />
-        <div class="anime-detials">
-          <div class="details-background">
-            <img class="image" src="" />
-          </div>
-          <div class="details-description">
-            <p class="synopsis"></p>
+        <div class="movie-list-wrapper">
+          <div class="movie-list-top"></div>
+          <h2 class="top-animes">Top Animes</h2>
+          <div class="movie-list"></div>
+          <div class="show-button">
+            <button id="show-more-top">
+              Show More <i class="fa fa-arrow-down"></i>
+            </button>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="movie-list-container">
-      <div class="movie-list-wrapper">
-        <h2 class="top-animes">Upcomming Animes</h2>
-        <div class="upcomming-movie-list"></div>
-        <div class="show-button">
-          <button id="show-more-upcomming">
-            Show More <i class="fa fa-arrow-down"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="movie-list-container">
-      <hr />
-      <div class="movie-list-wrapper">
-        <div class="movie-list-top"></div>
-        <h2 class="top-animes">Top Animes</h2>
-        <div class="movie-list"></div>
-        <div class="show-button">
-          <button id="show-more-top">
-            Show More <i class="fa fa-arrow-down"></i>
-          </button>
-        </div>
+      <div class="footer">
+        <p>All rights reserve &copy; <span>Omar Labib Hamdan</span> <br /></p>
       </div>
     </div>
 

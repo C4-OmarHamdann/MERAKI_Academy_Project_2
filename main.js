@@ -1,6 +1,11 @@
 const listCardWrapper = $(".movie-list-wrapper");
 const listCard = $(".movie-list");
 const listCardTop = $(".movie-list-top");
+$(".all-content").hide();
+const myLoading = setTimeout(() => {
+  $(".ring").fadeOut();
+  $(".all-content").fadeIn();
+}, 3000);
 
 //auto login\\
 dataUsers.forEach((element) => {
@@ -31,22 +36,10 @@ $.ajax(settings).done(function (response) {
 
   //add card
   let cards_length = $(".movie-list-item").length;
-  // top.forEach((element, index) => {
-
-  //   listCard.append(`<div class="movie-list-item">
-  //     <i id="${index}" class="fa fa-heart "></i>
-  //     <img class="movie-list-item-img" src="${element.image_url}" alt="" />
-  //     <span class="movie-list-item-title">${element.title}</span>
-  //     <p class="movie-list-item-desc">
-  //     ${element.synopsis}
-  //     </p>
-  //     <button id="${index}" class="movie-list-item-button details-btn">Details</button>
-  //   </div>`);
-  // });
 
   for (let index = 0; index < 16; index++) {
     listCard.append(`<div class="movie-list-item">
-     <i id="${index}" class="fa fa-heart "></i>
+    
      <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
        <span class="movie-list-item-title">${top[index].title}</span>
        <p class="movie-list-item-desc">
@@ -61,7 +54,7 @@ $.ajax(settings).done(function (response) {
   showMore.on("click", () => {
     for (let index = 16; index < top.length; index++) {
       listCard.append(`<div class="movie-list-item">
-     <i id="${index}" class="fa fa-heart "></i>
+    
      <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
        <span class="movie-list-item-title">${top[index].title}</span>
        <p class="movie-list-item-desc">
@@ -242,7 +235,7 @@ submit.on("click", () => {
             fav: [],
             usersStatus: true,
           });
-          // console.log("arrayData", arrayData);
+
           dataStorage.setItem("dataArray", JSON.stringify(arrayData));
 
           passRepeat.css("background-color", "var(--main-bg-color)");
@@ -393,7 +386,7 @@ $.ajax(settingstop).done(function (response) {
 
   for (let index = 0; index < 8; index++) {
     $(".upcomming-movie-list").append(`<div class="movie-list-item">
-    <i id="${index}" class="fa fa-heart "></i>
+    
       <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
       <span class="movie-list-item-title">${top[index].title}</span>
       <p class="movie-list-item-desc">
@@ -411,7 +404,7 @@ $.ajax(settingstop).done(function (response) {
   showMore.on("click", () => {
     for (let index = 8; index < top.length; index++) {
       $(".upcomming-movie-list").append(`<div class="movie-list-item">
-      <i id="${index}" class="fa fa-heart "></i>
+      
       <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
         <span class="movie-list-item-title">${top[index].title}</span>
         <p class="movie-list-item-desc">
@@ -457,7 +450,7 @@ $("#search").keyup(function (e) {
         for (let index = 0; index < 4; index++) {
           $(".search-list .sub-cat-search")
             .append(`<div class="movie-list-item search-list-items">
-  <i id="${index}" class="fa fa-heart "></i>
+ 
     <img class="movie-list-item-img" src="${
       serchValue[index].image_url
     }" alt="" />
@@ -533,7 +526,13 @@ $("#search").keyup(function (e) {
   }
 });
 
-//footer\\
-$("body").append(` <div class="footer">
-<p>All rights reserve &copy; <span>Omar Labib Hamdan</span> <br /></p>
-</div>`);
+// to top
+const toTop = document.querySelector(".to-top");
+
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 100) {
+    toTop.classList.add("active");
+  } else {
+    toTop.classList.remove("active");
+  }
+});

@@ -1,6 +1,6 @@
 //database\\
 const dataStorage = window.localStorage;
-let dataUsers = [];
+
 let arrayData = [
   {
     userName: "A16_Omar",
