@@ -91,18 +91,15 @@ $.ajax(settings).done(function (response) {
 
       //fav list\\
       $(".add-to-fav").on("click", () => {
-        console.log(top[e.target.id]);
         dataUsers.forEach((element, index) => {
           if (element.usersStatus) {
             dataUsers[0].fav.forEach((element) => {
               if (element.mal_id != top[e.target.id].mal_id) {
                 element.fav.push(top[e.target.id]);
               } else {
-                console.log(element.mal_id + " /n " + top[e.target.id].mal_id);
               }
             });
           } else {
-            console.log(dataUsers.usersStatus);
           }
         });
       });
@@ -141,7 +138,6 @@ $.ajax(settings).done(function (response) {
             $(`.${e.target.id}`).remove();
           }
         } else {
-          console.log(element.usersStatus);
         }
       });
     });
@@ -222,9 +218,8 @@ const submit = $(".signupbtn");
 
 submit.on("click", () => {
   $(".woring").remove();
-  console.log(dataUsers);
+
   if (userName.val() && email.val() && pass.val() && passRepeat.val()) {
-    console.log("dataUsers" + dataUsers);
     dataUsers.forEach((element) => {
       if (email.val() !== element.email) {
         if (pass.val() === passRepeat.val()) {
@@ -381,7 +376,7 @@ const settingstop = {
 
 $.ajax(settingstop).done(function (response) {
   const top = response.top;
-  console.log(top);
+
   //add card
 
   for (let index = 0; index < 8; index++) {
@@ -395,10 +390,7 @@ $.ajax(settingstop).done(function (response) {
       
     </div>`);
   }
-  /*
-  $(".fa-heart").on("click", (e) => {
-    console.log(top[e.target.id].title);
-  });*/
+
   //show-more\\
   const showMore = $("#show-more-upcomming");
   showMore.on("click", () => {
@@ -444,7 +436,7 @@ $("#search").keyup(function (e) {
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
         let serchValue = JSON.parse(this.responseText).results;
-        console.log(serchValue);
+
         $(".search-list").show();
         //search card\\
         for (let index = 0; index < 4; index++) {
@@ -473,7 +465,6 @@ $("#search").keyup(function (e) {
           $("#search-details").show();
           let index = e.target.id;
           const data = serchValue[e.target.id];
-          console.log(data.synopsis);
 
           $("#search-details .header h1").text(data.title);
           $("#search-details .eps").text(data.episodes);
@@ -493,20 +484,15 @@ $("#search").keyup(function (e) {
 
           //fav list\\
           $(".add-to-fav").on("click", () => {
-            console.log(top[e.target.id]);
             dataUsers.forEach((element, index) => {
               if (element.usersStatus) {
                 dataUsers[0].fav.forEach((element) => {
                   if (element.mal_id != top[e.target.id].mal_id) {
                     element.fav.push(top[e.target.id]);
                   } else {
-                    console.log(
-                      element.mal_id + " /n " + top[e.target.id].mal_id
-                    );
                   }
                 });
               } else {
-                console.log(dataUsers.usersStatus);
               }
             });
           });
@@ -517,12 +503,17 @@ $("#search").keyup(function (e) {
         //exit button\\
         $(".exit").click(() => {
           listCardWrapper.show();
-
           $("#search-details").hide();
+          $(".search-list").hide();
         });
       }
     };
     request.send();
+    //exit button\\
+    $(".exit").click(() => {
+      listCardWrapper.show();
+      $("#search-details").hide();
+    });
   }
 });
 
