@@ -106,7 +106,7 @@ $.ajax(settings).done(function (response) {
   $(".details-btn").click((e) => {
     let index = e.target.id;
     const data = top[e.target.id];
-
+    $(".heartd").remove();
     $(".header h1").text(data.title);
     $(".eps").text(data.episodes);
     $(".date").text(data.airing_start.substring(0, 10));
@@ -127,7 +127,6 @@ $.ajax(settings).done(function (response) {
     $(".heartd").on("click", () => {
       dataUsers.forEach((element, index) => {
         if (element.usersStatus) {
-          console.log(element.fav.indexOf(top[e.target.id]));
           if (element.fav.indexOf(top[e.target.id]) == -1) {
             element.fav.push(top[e.target.id]);
             $(`.${e.target.id}`).remove();
@@ -177,6 +176,14 @@ ball.addEventListener("click", () => {
 
 //sign up
 
+$(".show-login").on("click", () => {
+  $("#id01").css("display", "none");
+});
+$(".show-signup").on("click", () => {
+  $("#id02").css("display", "none");
+});
+
+//create account\\
 const userName = $(` <input
 class="s-username"
 
@@ -194,27 +201,21 @@ name="email"
 required
 />`);
 $(".email").append(email);
-const pass = $(`<input
-class="s-psw"
-type="password"
-placeholder="Enter Password"
-name="psw"
-required
-/>`);
+const pass = $(
+  `<input class="s-psw" type="password" placeholder="Enter Password" name="psw" required />`
+);
 $(".psw").append(pass);
-const passRepeat = $(`<input
-class="s-psw-r"
-type="password"
-placeholder="Repeat Password"
-name="psw-repeat"
-required
-/>`);
+const passRepeat = $(
+  `<input class="s-psw-r" type="password" placeholder="Repeat Password" name="psw-repeat" required />`
+);
 $(".psw-r").append(passRepeat);
 const submit = $(".signupbtn");
 
 submit.on("click", () => {
   $(".woring").remove();
+  console.log(dataUsers);
   if (userName.val() && email.val() && pass.val() && passRepeat.val()) {
+    console.log("dataUsers" + dataUsers);
     dataUsers.forEach((element) => {
       if (email.val() != element.email) {
         if (pass.val() === passRepeat.val()) {
@@ -225,7 +226,9 @@ submit.on("click", () => {
             fav: [],
             usersStatus: true,
           });
-          dataStorage.setItem("dataArray", JSON.stringify(arrayData));
+          // console.log("arrayData", arrayData);
+          localStorage.setItem("dataArray", JSON.stringify(arrayData));
+
           passRepeat.css("background-color", "var(--main-bg-color)");
           pass.css("background-color", "var(--main-bg-color)");
           userName.css("background-color", "var(--main-bg-color)");
@@ -369,7 +372,7 @@ const settingstop = {
 
 $.ajax(settingstop).done(function (response) {
   const top = response.top;
-
+  console.log(top);
   //add card
 
   for (let index = 0; index < 8; index++) {
@@ -380,7 +383,7 @@ $.ajax(settingstop).done(function (response) {
       <p class="movie-list-item-desc">
       ${top[index].start_date == null ? "coming soon" : top[index].start_date}
       </p>
-      <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+      <button id="${index}" class="movie-list-item-button  upcomming-details-btn">Details</button>
     </div>`);
   }
   //show-more\\
@@ -398,6 +401,51 @@ $.ajax(settingstop).done(function (response) {
       </div>`);
     }
     showMore.remove();
+  });
+
+  //details card
+
+  $(".upcomming-details-btn").click((e) => {
+    let index = e.target.id;
+    const data = top[e.target.id];
+    console.log("test");
+    $(".upcomming-details-list").show();
+
+    $(".header h1").text(top.title);
+    $(".eps").text(data.episodes);
+    //$(".date").text(data.airing_start.substring(0, 10));
+    $(".score").text(data.score);
+    $(".rank").text(++index);
+    $(".image").attr("src", top.image_url);
+
+    $(".synopsis").text(data.synopsis);
+    // for (let index = 0; index < data.genres.length; index++) {
+    //   $(".genres ul").append(`<li>${data.genres[index].name}</li>`);
+    // }
+    listCardWrapper.hide();
+    $(".upcomming-details-list").show();
+    $(".upcoming").append(
+      ` <i class="fas fa-heart heartd ${e.target.id}"></i>`
+    );
+    //fav list\\
+    $(".heartd").on("click", () => {
+      dataUsers.forEach((element, index) => {
+        if (element.usersStatus) {
+          if (element.fav.indexOf(top[e.target.id]) == -1) {
+            element.fav.push(top[e.target.id]);
+            $(`.${e.target.id}`).remove();
+          }
+        } else {
+          console.log(element.usersStatus);
+        }
+      });
+    });
+  });
+
+  $(".exit").click(() => {
+    listCardWrapper.show();
+    $(".genres ul").html("");
+    $(".upcomming-details-list").hide();
   });
 });
 

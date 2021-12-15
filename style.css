@@ -218,6 +218,9 @@ hr {
   padding: 75px;
   display: none;
 }
+.upcomming-details-list {
+  display: none;
+}
 .favlast {
   padding: 75px;
   display: none;
