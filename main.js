@@ -120,15 +120,17 @@ $.ajax(settings).done(function (response) {
     }
     listCardWrapper.hide();
     $(".more-details-section").show();
-
+    $(".details-background").append(
+      ` <i class="fas fa-heart heartd ${e.target.id}"></i>`
+    );
     //fav list\\
     $(".heartd").on("click", () => {
       dataUsers.forEach((element, index) => {
         if (element.usersStatus) {
           console.log(element.fav.indexOf(top[e.target.id]));
           if (element.fav.indexOf(top[e.target.id]) == -1) {
-            console.log(element.fav.indexOf(top[e.target.id]));
             element.fav.push(top[e.target.id]);
+            $(`.${e.target.id}`).remove();
           }
         } else {
           console.log(element.usersStatus);
@@ -150,17 +152,17 @@ const ball = document.querySelector(".toggle-ball");
 const items = document.querySelectorAll(
   ".more-details-section,.container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
 );
-let c = true;
+let switchMode = true;
 ball.addEventListener("click", () => {
   ball.classList.toggle("active");
-  if (c) {
+  if (switchMode) {
     $(":root").css({
       "--main-bg-color": "#eee",
       "--main-txt-color": "#333",
       "--main-nav-bg-color": "white",
       "--main-nav-txt-color": "black",
     });
-    c = false;
+    switchMode = false;
   } else {
     $(":root").css({
       "--main-bg-color": "#333",
@@ -169,7 +171,7 @@ ball.addEventListener("click", () => {
       "--main-nav-bg-color": "black",
       "--main-nav-txt-color": "white",
     });
-    c = true;
+    switchMode = true;
   }
 });
 
