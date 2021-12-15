@@ -1,8 +1,19 @@
 const listCardWrapper = $(".movie-list-wrapper");
 const listCard = $(".movie-list");
 const listCardTop = $(".movie-list-top");
-const detalis = $(".more-details-section");
 
+//auto login\\
+dataUsers.forEach((element) => {
+  if (element.usersStatus) {
+    $("#id01").css("display", "none");
+    $(".profile-text-container").css("display", "block").text(element.userName);
+    $(".profile-picture").css("display", "block");
+    $(".favlist").css("display", "block");
+    $(".auth-list a").css("display", "block");
+    $(".show-login").parent().hide();
+    $(".show-signup").parent().hide();
+  }
+});
 //API \\
 const settings = {
   async: true,
@@ -64,6 +75,7 @@ $.ajax(settings).done(function (response) {
     //details card
 
     $(".details-btn").click((e) => {
+      $(".add-to-fav").remove();
       let index = e.target.id;
       const data = top[e.target.id];
 
@@ -79,10 +91,13 @@ $.ajax(settings).done(function (response) {
         $(".genres ul").append(`<li>${data.genres[index].name}</li>`);
       }
       listCardWrapper.hide();
-      $(".more-details-section").show();
+      $("#main-details").show();
+      $(".details-background").append(
+        `<button class="add-to-fav"><i class="fas fa-heart heartd ${e.target.id}"></i>&nbsp;Add To Favorite</button>`
+      );
 
       //fav list\\
-      $(".heartd").on("click", () => {
+      $(".add-to-fav").on("click", () => {
         console.log(top[e.target.id]);
         dataUsers.forEach((element, index) => {
           if (element.usersStatus) {
@@ -104,6 +119,7 @@ $.ajax(settings).done(function (response) {
   //details card
 
   $(".details-btn").click((e) => {
+    $(".add-to-fav").remove();
     let index = e.target.id;
     const data = top[e.target.id];
     $(".heartd").remove();
@@ -119,12 +135,12 @@ $.ajax(settings).done(function (response) {
       $(".genres ul").append(`<li>${data.genres[index].name}</li>`);
     }
     listCardWrapper.hide();
-    $(".more-details-section").show();
+    $("#main-details").show();
     $(".details-background").append(
-      ` <i class="fas fa-heart heartd ${e.target.id}"></i>`
+      `<button class="add-to-fav"><i class="fas fa-heart heartd ${e.target.id}"></i>&nbsp;Add To Favorite</button>`
     );
     //fav list\\
-    $(".heartd").on("click", () => {
+    $(".add-to-fav").on("click", () => {
       dataUsers.forEach((element, index) => {
         if (element.usersStatus) {
           if (element.fav.indexOf(top[e.target.id]) == -1) {
@@ -141,7 +157,7 @@ $.ajax(settings).done(function (response) {
   $(".exit").click(() => {
     listCardWrapper.show();
     $(".genres ul").html("");
-    $(".more-details-section").hide();
+    $("#main-details").hide();
   });
 });
 
@@ -149,7 +165,7 @@ $.ajax(settings).done(function (response) {
 
 const ball = document.querySelector(".toggle-ball");
 const items = document.querySelectorAll(
-  ".more-details-section,.container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
+  "#main-details,.container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
 );
 let switchMode = true;
 ball.addEventListener("click", () => {
@@ -227,7 +243,7 @@ submit.on("click", () => {
             usersStatus: true,
           });
           // console.log("arrayData", arrayData);
-          localStorage.setItem("dataArray", JSON.stringify(arrayData));
+          dataStorage.setItem("dataArray", JSON.stringify(arrayData));
 
           passRepeat.css("background-color", "var(--main-bg-color)");
           pass.css("background-color", "var(--main-bg-color)");
@@ -347,7 +363,7 @@ dataUsers.forEach((elm) => {
     </div>`);
       });
       listCardWrapper.hide();
-      $(".more-details-section").hide();
+      $("#main-details").hide();
       //exit button\\
       $(".exit").click(() => {
         listCardWrapper.show();
@@ -383,7 +399,7 @@ $.ajax(settingstop).done(function (response) {
       <p class="movie-list-item-desc">
       ${top[index].start_date == null ? "coming soon" : top[index].start_date}
       </p>
-      <button id="${index}" class="movie-list-item-button  upcomming-details-btn">Details</button>
+      
     </div>`);
   }
   /*
@@ -401,56 +417,13 @@ $.ajax(settingstop).done(function (response) {
         <p class="movie-list-item-desc">
         ${top[index].synopsis}
         </p>
-        <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+       
       </div>`);
     }
     showMore.remove();
   });
 
   //details card
-
-  $(".upcomming-details-btn").click((e) => {
-    let index = e.target.id;
-    const data = top[e.target.id];
-    console.log("test");
-    $(".upcomming-details-list").show();
-
-    $(".header h1").text(top.title);
-    $(".eps").text(data.episodes);
-    //$(".date").text(data.airing_start.substring(0, 10));
-    $(".score").text(data.score);
-    $(".rank").text(++index);
-    $(".image").attr("src", top.image_url);
-
-    $(".synopsis").text(data.synopsis);
-    // for (let index = 0; index < data.genres.length; index++) {
-    //   $(".genres ul").append(`<li>${data.genres[index].name}</li>`);
-    // }
-    listCardWrapper.hide();
-    $(".upcomming-details-list").show();
-    $(".upcoming").append(
-      ` <i class="fas fa-heart heartd ${e.target.id}"></i>`
-    );
-    //fav list\\
-    $(".heartd").on("click", () => {
-      dataUsers.forEach((element, index) => {
-        if (element.usersStatus) {
-          if (element.fav.indexOf(top[e.target.id]) == -1) {
-            element.fav.push(top[e.target.id]);
-            $(`.${e.target.id}`).remove();
-          }
-        } else {
-          console.log(element.usersStatus);
-        }
-      });
-    });
-  });
-
-  $(".exit").click(() => {
-    listCardWrapper.show();
-    $(".genres ul").html("");
-    $(".upcomming-details-list").hide();
-  });
 });
 
 // search\\
@@ -482,7 +455,7 @@ $("#search").keyup(function (e) {
         $(".search-list").show();
         //search card\\
         for (let index = 0; index < 4; index++) {
-          $(".search-list .sub-cat")
+          $(".search-list .sub-cat-search")
             .append(`<div class="movie-list-item search-list-items">
   <i id="${index}" class="fa fa-heart "></i>
     <img class="movie-list-item-img" src="${
@@ -496,19 +469,63 @@ $("#search").keyup(function (e) {
         : serchValue[index].start_date
     }
     </p>
-    <button id="${index}" class="movie-list-item-button details-btn">Details</button>
+    <button id="${index}" class="movie-list-item-button details-btn search-details">Details</button>
   </div>`);
         }
+        //details card
 
-        $(".search-list").append();
+        $(".search-details").click((e) => {
+          $(".add-to-fav").remove();
+          $("#main-details").hide();
+          $("#search-details").show();
+          let index = e.target.id;
+          const data = serchValue[e.target.id];
+          console.log(data.synopsis);
+
+          $("#search-details .header h1").text(data.title);
+          $("#search-details .eps").text(data.episodes);
+          $(".date").text(data.start_date.substring(0, 10));
+          $("#search-details .score").text(data.score);
+
+          $("#search-details .image").attr("src", data.image_url);
+
+          $("#search-details .synopsis").text(data.synopsis);
+
+          $(".search-list").hide();
+          listCardWrapper.hide();
+
+          $("#search-details .details-background").append(
+            `<button class="add-to-fav"><i class="fas fa-heart heartd ${e.target.id}"></i>&nbsp;Add To Favorite</button>`
+          );
+
+          //fav list\\
+          $(".add-to-fav").on("click", () => {
+            console.log(top[e.target.id]);
+            dataUsers.forEach((element, index) => {
+              if (element.usersStatus) {
+                dataUsers[0].fav.forEach((element) => {
+                  if (element.mal_id != top[e.target.id].mal_id) {
+                    element.fav.push(top[e.target.id]);
+                  } else {
+                    console.log(
+                      element.mal_id + " /n " + top[e.target.id].mal_id
+                    );
+                  }
+                });
+              } else {
+                console.log(dataUsers.usersStatus);
+              }
+            });
+          });
+        });
         listCardWrapper.hide();
-        $(".more-details-section").hide();
 
+        $(".favlastIteams").hide();
         //exit button\\
         $(".exit").click(() => {
           listCardWrapper.show();
 
-          $(".search-list").hide();
+          $("#search-details").hide();
         });
       }
     };

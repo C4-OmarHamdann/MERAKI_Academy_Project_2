@@ -54,7 +54,8 @@ hr {
   display: none;
   margin: 0 13px 0;
 }
-.sub-cat {
+.sub-cat,
+.sub-cat-search {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -206,7 +207,7 @@ hr {
   right: 15px;
   z-index: 8;
 }
-.details-background .fas.fa-heart {
+.add-to-fav {
   padding: 8px;
   margin: 0;
   font-size: 20px;
@@ -214,7 +215,14 @@ hr {
   border-radius: 10px;
   background-color: tomato;
   text-align: center;
-  width: 80%;
+  width: 100%;
+  color: var(--main-txt-color);
+  border: 1px solid transparent;
+}
+.add-to-fav:hover {
+  color: tomato;
+  border: 1px solid tomato;
+  background-color: transparent;
 }
 .heart-d {
   font-size: 30px;
@@ -225,7 +233,7 @@ hr {
 /* detials */
 
 .more-details-section {
-  padding: 75px;
+  padding: 10px 75px;
   display: none;
 }
 .upcomming-details-list {

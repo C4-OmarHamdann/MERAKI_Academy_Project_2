@@ -1,6 +1,6 @@
 //database\\
 const dataStorage = window.localStorage;
-dataStorage.setItem;
+let dataUsers = [];
 let arrayData = [
   {
     userName: "A16_Omar",
@@ -11,5 +11,5 @@ let arrayData = [
   },
 ];
 
-let dataUsers = JSON.parse(localStorage.getItem("dataArray"));
 dataStorage.setItem("dataArray", JSON.stringify(arrayData));
+dataUsers = JSON.parse(localStorage.getItem("dataArray"));
