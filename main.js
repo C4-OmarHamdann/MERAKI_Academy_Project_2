@@ -123,18 +123,15 @@ $.ajax(settings).done(function (response) {
 
     //fav list\\
     $(".heartd").on("click", () => {
-      console.log(top[e.target.id]);
       dataUsers.forEach((element, index) => {
         if (element.usersStatus) {
-          dataUsers[0].fav.forEach((element) => {
-            if (element.mal_id != top[e.target.id].mal_id) {
-              element.fav.push(top[e.target.id]);
-            } else {
-              console.log(element.mal_id + " /n " + top[e.target.id].mal_id);
-            }
-          });
+          console.log(element.fav.indexOf(top[e.target.id]));
+          if (element.fav.indexOf(top[e.target.id]) == -1) {
+            console.log(element.fav.indexOf(top[e.target.id]));
+            element.fav.push(top[e.target.id]);
+          }
         } else {
-          console.log(dataUsers.usersStatus);
+          console.log(element.usersStatus);
         }
       });
     });
@@ -214,6 +211,7 @@ $(".psw-r").append(passRepeat);
 const submit = $(".signupbtn");
 
 submit.on("click", () => {
+  $(".woring").remove();
   if (userName.val() && email.val() && pass.val() && passRepeat.val()) {
     dataUsers.forEach((element) => {
       if (email.val() != element.email) {
@@ -241,6 +239,7 @@ submit.on("click", () => {
           $(".show-login").parent().hide();
           $(".show-signup").parent().hide();
         } else {
+          $(".woring").remove();
           passRepeat.css("background-color", "#F52A12");
           pass.css("background-color", "#F52A12");
           $(".psw-r").prepend(
@@ -248,6 +247,7 @@ submit.on("click", () => {
           );
         }
       } else {
+        $(".woring").remove();
         email.css("background-color", "#F52A12");
         $(".email").prepend(
           `<h3 class="woring" style="color:#F52A12">Existing E-mail</h3>`
@@ -263,7 +263,10 @@ submit.on("click", () => {
 });
 //logout button\\
 $(".logout").on("click", () => {
-  dataUsers.usersStatus = false;
+  dataUsers.forEach((element) => {
+    element.usersStatus = false;
+  });
+
   $(".profile-text-container").css("display", "none").text(userName.val());
   $(".profile-picture").css("display", "none");
   $(".favlist").css("display", "none");
@@ -277,7 +280,7 @@ const loginEmail = $(`<input
 class="l-email"
 type="text"
 placeholder="Enter Email"
-name="email"
+name="email-l"
 required
 />`);
 $(".login-email").append(loginEmail);
@@ -286,7 +289,7 @@ const loginPass = $(`<input
 class="l-psw"
 type="password"
 placeholder="Enter Password"
-name="psw"
+name="psw-l"
 required
 />`);
 $(".login-psw").append(loginPass);
@@ -294,11 +297,13 @@ $(".login-psw").append(loginPass);
 const login = $(".loginbtn");
 
 login.on("click", () => {
+  $(".woring").remove();
   dataUsers.forEach((element) => {
     if (
       loginEmail.val() == element.email &&
       loginPass.val() == element.password
     ) {
+      element.usersStatus = true;
       $("#id02").css("display", "none");
       $(".profile-text-container")
         .css("display", "block")
@@ -308,19 +313,25 @@ login.on("click", () => {
       $(".auth-list a").css("display", "block");
       $(".show-login").parent().hide();
       $(".show-signup").parent().hide();
+    } else {
+      $(".woring").remove();
+      loginEmail.css("background-color", "#F52A12");
+      loginPass.css("background-color", "#F52A12");
+      $(".login-email").prepend(
+        `<h3 class="woring" style="color:#F52A12">E-mail or Password uncoract</h3>`
+      );
     }
   });
 });
 
 //favlist\\
-
-let favArray = [];
-favArray = dataUsers[0].fav;
-$(".favlist").on("click", () => {
-  $(".favlastIteams").show();
-
-  favArray.forEach((element, index) => {
-    $(".favlastIteams").append(`<div class="movie-list-item">
+dataUsers.forEach((elm) => {
+  if (elm.usersStatus) {
+    $(".favlist").on("click", () => {
+      $(".favlastIteams").show();
+      $(".movie-list-item-fav").remove();
+      elm.fav.forEach((element, index) => {
+        $(".favlastIteams").append(`<div class="movie-list-item-fav">
      
       <img class="movie-list-item-img" src="${element.image_url}" alt="" />
       <span class="movie-list-item-title">${element.title}</span>
@@ -329,15 +340,17 @@ $(".favlist").on("click", () => {
       </p>
       
     </div>`);
-  });
-  listCardWrapper.hide();
-  $(".more-details-section").hide();
-  //exit button\\
-  $(".exit").click(() => {
-    listCardWrapper.show();
+      });
+      listCardWrapper.hide();
+      $(".more-details-section").hide();
+      //exit button\\
+      $(".exit").click(() => {
+        listCardWrapper.show();
 
-    $(".favlastIteams").hide();
-  });
+        $(".favlastIteams").hide();
+      });
+    });
+  }
 });
 
 //Upcomming
