@@ -217,7 +217,7 @@ submit.on("click", () => {
   if (userName.val() && email.val() && pass.val() && passRepeat.val()) {
     console.log("dataUsers" + dataUsers);
     dataUsers.forEach((element) => {
-      if (email.val() != element.email) {
+      if (email.val() !== element.email) {
         if (pass.val() === passRepeat.val()) {
           arrayData.push({
             userName: userName.val(),
@@ -330,33 +330,33 @@ login.on("click", () => {
 });
 
 //favlist\\
-dataUsers.forEach((elm) => {
-  if (elm.usersStatus) {
-    $(".favlist").on("click", () => {
-      $(".favlastIteams").show();
-      $(".movie-list-item-fav").remove();
-      elm.fav.forEach((element, index) => {
-        $(".favlastIteams").append(`<div class="movie-list-item-fav">
-     
-      <img class="movie-list-item-img" src="${element.image_url}" alt="" />
-      <span class="movie-list-item-title">${element.title}</span>
-      <p class="movie-list-item-desc">
-      ${element.synopsis}
-      </p>
-      
-    </div>`);
-      });
-      listCardWrapper.hide();
-      $(".more-details-section").hide();
-      //exit button\\
-      $(".exit").click(() => {
-        listCardWrapper.show();
+// dataUsers.forEach((elm) => {
+//   if (elm.usersStatus) {
+//     $(".favlist").on("click", () => {
+//       $(".favlastIteams").show();
+//       $(".movie-list-item-fav").remove();
+//       elm.fav.forEach((element, index) => {
+//         $(".favlastIteams").append(`<div class="movie-list-item-fav">
 
-        $(".favlastIteams").hide();
-      });
-    });
-  }
-});
+//       <img class="movie-list-item-img" src="${element.image_url}" alt="" />
+//       <span class="movie-list-item-title">${element.title}</span>
+//       <p class="movie-list-item-desc">
+//       ${element.synopsis}
+//       </p>
+
+//     </div>`);
+//       });
+//       listCardWrapper.hide();
+//       $(".more-details-section").hide();
+//       //exit button\\
+//       $(".exit").click(() => {
+//         listCardWrapper.show();
+
+//         $(".favlastIteams").hide();
+//       });
+//     });
+//   }
+// });
 
 //Upcomming
 const settingstop = {
@@ -386,6 +386,9 @@ $.ajax(settingstop).done(function (response) {
       <button id="${index}" class="movie-list-item-button  upcomming-details-btn">Details</button>
     </div>`);
   }
+  $(".fa-heart").on("click", (e) => {
+    console.log(top[e.target.id].title);
+  });
   //show-more\\
   const showMore = $("#show-more-upcomming");
   showMore.on("click", () => {
