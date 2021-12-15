@@ -12,4 +12,4 @@ let arrayData = [
 ];
 
 let dataUsers = JSON.parse(localStorage.getItem("dataArray"));
-// dataStorage.setItem("dataArray", JSON.stringify(arrayData));
+dataStorage.setItem("dataArray", JSON.stringify(arrayData));
