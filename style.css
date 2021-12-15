@@ -54,7 +54,15 @@ hr {
   display: none;
   margin: 0 13px 0;
 }
-
+.sub-cat {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
 /* favlist and search list */
 .search-list,
 .favlastIteams {
@@ -63,7 +71,9 @@ hr {
 .exit {
   margin: 20px;
 }
-
+.movie-list-item-fav {
+  margin: 2rem;
+}
 .favlist {
   display: none;
   color: tomato;

@@ -330,33 +330,33 @@ login.on("click", () => {
 });
 
 //favlist\\
-// dataUsers.forEach((elm) => {
-//   if (elm.usersStatus) {
-//     $(".favlist").on("click", () => {
-//       $(".favlastIteams").show();
-//       $(".movie-list-item-fav").remove();
-//       elm.fav.forEach((element, index) => {
-//         $(".favlastIteams").append(`<div class="movie-list-item-fav">
+dataUsers.forEach((elm) => {
+  if (elm.usersStatus) {
+    $(".favlist").on("click", () => {
+      $(".favlastIteams").show();
+      $(".sub-cat .movie-list-item").remove();
+      elm.fav.forEach((element, index) => {
+        $(".sub-cat").append(`<div class="movie-list-item">
 
-//       <img class="movie-list-item-img" src="${element.image_url}" alt="" />
-//       <span class="movie-list-item-title">${element.title}</span>
-//       <p class="movie-list-item-desc">
-//       ${element.synopsis}
-//       </p>
+      <img class="movie-list-item-img" src="${element.image_url}" alt="" />
+      <span class="movie-list-item-title">${element.title}</span>
+      <p class="movie-list-item-desc">
+      ${element.synopsis}
+      </p>
 
-//     </div>`);
-//       });
-//       listCardWrapper.hide();
-//       $(".more-details-section").hide();
-//       //exit button\\
-//       $(".exit").click(() => {
-//         listCardWrapper.show();
+    </div>`);
+      });
+      listCardWrapper.hide();
+      $(".more-details-section").hide();
+      //exit button\\
+      $(".exit").click(() => {
+        listCardWrapper.show();
 
-//         $(".favlastIteams").hide();
-//       });
-//     });
-//   }
-// });
+        $(".favlastIteams").hide();
+      });
+    });
+  }
+});
 
 //Upcomming
 const settingstop = {
@@ -386,9 +386,10 @@ $.ajax(settingstop).done(function (response) {
       <button id="${index}" class="movie-list-item-button  upcomming-details-btn">Details</button>
     </div>`);
   }
+  /*
   $(".fa-heart").on("click", (e) => {
     console.log(top[e.target.id].title);
-  });
+  });*/
   //show-more\\
   const showMore = $("#show-more-upcomming");
   showMore.on("click", () => {
@@ -481,7 +482,7 @@ $("#search").keyup(function (e) {
         $(".search-list").show();
         //search card\\
         for (let index = 0; index < 4; index++) {
-          $(".search-list")
+          $(".search-list .sub-cat")
             .append(`<div class="movie-list-item search-list-items">
   <i id="${index}" class="fa fa-heart "></i>
     <img class="movie-list-item-img" src="${
