@@ -1,7 +1,12 @@
 # MERAKI_Academy_Project_2
+
 MERAKI_Academy_Project_2
 
+#Demo
 
-#Demo 
+Try a site to watch the best anime 🤩🤩
 
-https://determined-galileo-2a117a.netlify.app
+Click here 👇👇
+https://animeflixbyomar.netlify.app/
+
+All rights reserve © Omar Labib Hamdan

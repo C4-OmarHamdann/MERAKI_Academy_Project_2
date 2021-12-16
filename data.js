@@ -7,9 +7,9 @@ let arrayData = [
     email: "asd@qwe.com",
     password: "1234",
     fav: [],
-    usersStatus: false,
+    usersStatus: true,
   },
 ];
 
-dataStorage.setItem("dataArray", JSON.stringify(arrayData));
+//dataStorage.setItem("dataArray", JSON.stringify(arrayData));
 dataUsers = JSON.parse(localStorage.getItem("dataArray"));
