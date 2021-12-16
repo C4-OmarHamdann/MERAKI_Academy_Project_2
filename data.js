@@ -7,7 +7,7 @@ let arrayData = [
     email: "asd@qwe.com",
     password: "1234",
     fav: [],
-    usersStatus: true,
+    usersStatus: false,
   },
 ];
 
