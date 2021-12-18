@@ -400,7 +400,7 @@ $.ajax(settingstop).done(function (response) {
       <img class="movie-list-item-img" src="${top[index].image_url}" alt="" />
         <span class="movie-list-item-title">${top[index].title}</span>
         <p class="movie-list-item-desc">
-        ${top[index].synopsis}
+        ${top[index].start_date == null ? "coming soon" : top[index].start_date}
         </p>
        
       </div>`);
