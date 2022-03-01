@@ -74,7 +74,7 @@ $.ajax(settings).done(function (response) {
 
       $(".header h1").text(data.title);
       $(".eps").text(data.episodes);
-      $(".date").text(data.airing_start.substring(0, 10));
+      // $(".date").text(data.airing_start.substring(0, 10));
       $(".score").text(data.score);
       $(".rank").text(++index);
       $(".image").attr("src", data.image_url);
@@ -115,7 +115,7 @@ $.ajax(settings).done(function (response) {
     $(".heartd").remove();
     $(".header h1").text(data.title);
     $(".eps").text(data.episodes);
-    $(".date").text(data.airing_start.substring(0, 10));
+    // $(".date").text(data.airing_start.substring(0, 10));
     $(".score").text(data.score);
     $(".rank").text(++index);
     $(".image").attr("src", data.image_url);
@@ -468,7 +468,7 @@ $("#search").keyup(function (e) {
 
           $("#search-details .header h1").text(data.title);
           $("#search-details .eps").text(data.episodes);
-          $(".date").text(data.start_date.substring(0, 10));
+          // $(".date").text(data.start_date.substring(0, 10));
           $("#search-details .score").text(data.score);
 
           $("#search-details .image").attr("src", data.image_url);
